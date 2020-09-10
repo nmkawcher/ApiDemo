@@ -34,23 +34,12 @@ public class MainActivity extends AppCompatActivity {
         listCall.enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-                if (!response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     textView.setText("Code " + response.code());
-                    return;
-                }
-
-                List<Post> posts = response.body();
-
-                for (Post post : posts) {
-                    String content = "";
-                    content += "ID: " + post.getId() + "\n";
-                    content += "User ID: " + post.getUserID() + "\n";
-                    content += "Title: " + post.getTitle() + "\n";
-                    content += "Body: " + post.getText() + "\n\n";
-
-                    textView.append(content);
 
                 }
+
+
 
             }
 
